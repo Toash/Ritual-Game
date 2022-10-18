@@ -7,19 +7,23 @@ onready var activated:bool = false
 onready var onGizmo = $Activated
 onready var offGizmo = $Deactivated
 
+func _ready():
+	if Global.debugging:
+		onGizmo.show()
+		offGizmo.show()
+	else:
+		onGizmo.hide()
+		offGizmo.hide()
+
 func activate():
-	if Global.debugging == true:
+	if Global.debugging:
 		onGizmo.show()
 		offGizmo.hide()
 	activated = true
-	print("Activated")
-	pass
 	
 	
 func deactivate():
-	if Global.debugging == true:
+	if Global.debugging:
 		onGizmo.hide()
 		offGizmo.show()
 	activated = false
-	print("Deactivated")
-	pass

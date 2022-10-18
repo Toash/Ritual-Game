@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Ghost.gd" type="Script" id=1]
 [ext_resource path="res://Modern tiles_Free/Characters_free/Bob_idle_16x16.png" type="Texture" id=2]
+[ext_resource path="res://Audio/Ghost/Retro Weird Psych Long 11.wav" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 16, 32 )
 
@@ -39,5 +39,14 @@ frames = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -2 )
 shape = SubResource( 4 )
+
+[node name="LineOfSight" type="RayCast2D" parent="."]
+enabled = true
+
+[node name="Terror" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 0.3
+autoplay = true
+attenuation = 18.3791
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

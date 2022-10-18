@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Credits:
+https://kronbits.itch.io/freesfx
+
+https://limezu.itch.io/moderninteriors
+
+https://opengameart.org/content/simple-torch-animation-16x16
+
+
+
+"

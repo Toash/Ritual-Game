@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://Scripts/GhostSpawn.gd"
 }, {
 "base": "Area2D",
+"class": "Pentagram",
+"language": "GDScript",
+"path": "res://Scripts/Pentagram.gd"
+}, {
+"base": "Area2D",
 "class": "Torch",
 "language": "GDScript",
 "path": "res://Scripts/Torch.gd"
 } ]
 _global_script_class_icons={
 "GhostSpawn": "",
+"Pentagram": "",
 "Torch": ""
 }
 
