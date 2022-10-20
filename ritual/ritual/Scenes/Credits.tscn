@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Credits:
+
+made in godot (of course)
+
+https://kronbits.itch.io/freesfx
+
+https://limezu.itch.io/moderninteriors
+
+https://opengameart.org/content/simple-torch-animation-16x16
+
+https://opengameart.org/content/ghost-monster-voice-moaning-growling
+
+https://opengameart.org/content/skull-2
+"
