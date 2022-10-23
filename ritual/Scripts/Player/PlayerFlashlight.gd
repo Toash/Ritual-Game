@@ -7,6 +7,3 @@ func _ready():
 	else:
 		enabled = true
 		
-		
-		
-		

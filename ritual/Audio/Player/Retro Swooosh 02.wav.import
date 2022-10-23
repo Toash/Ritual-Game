@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Retro Swooosh 02.wav-ed16a06b879cbe27c9fc247ef6f895cd.sample"
+
+[deps]
+
+source_file="res://Audio/Player/Retro Swooosh 02.wav"
+dest_files=[ "res://.import/Retro Swooosh 02.wav-ed16a06b879cbe27c9fc247ef6f895cd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

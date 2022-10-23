@@ -1,0 +1,365 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Scenes/Player/PlayerDeathAnimation.gd" type="Script" id=1]
+[ext_resource path="res://Art/Modern tiles_Free/Characters_free/Adam_run_16x16.png" type="Texture" id=2]
+[ext_resource path="res://Art/Modern tiles_Free/Characters_free/Adam_idle_16x16.png" type="Texture" id=3]
+[ext_resource path="res://Art/Modern tiles_Free/Characters_free/Bob_idle_16x16.png" type="Texture" id=4]
+[ext_resource path="res://Art/bloodsplat.png" type="Texture" id=5]
+[ext_resource path="res://Art/light.png" type="Texture" id=6]
+[ext_resource path="res://Audio/Ghost/ghost.wav" type="AudioStream" id=7]
+[ext_resource path="res://Fonts/upheavtt.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="Animation" id=49]
+resource_name = "player_death"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.1, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ghost:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.7, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blood_everywhere:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("whooooo")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 2.8 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("you died:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5.2, 6.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("press r to restart:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6, 7.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=48]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 288, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 304, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 336, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 352, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 368, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 208, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 240, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 2 )
+region = Rect2( 272, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 2 )
+region = Rect2( 112, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=47]
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 43 ) ],
+"loop": true,
+"name": "idle_d",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 44 ) ],
+"loop": true,
+"name": "idle_l",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 45 ) ],
+"loop": true,
+"name": "idle_r",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 46 ) ],
+"loop": true,
+"name": "idle_u",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+} ]
+
+[sub_resource type="Curve" id=50]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.760589, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.713739 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=51]
+offsets = PoolRealArray( 0, 0.765657, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=52]
+size = 64
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=53]
+size = 48
+font_data = ExtResource( 8 )
+
+[node name="PlayerDeath" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "player_death"
+anims/player_death = SubResource( 49 )
+
+[node name="Ghost" type="Node2D" parent="."]
+position = Vector2( 72, -59 )
+scale = Vector2( 5, 5 )
+z_index = -2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Ghost"]
+self_modulate = Color( 1, 0.498039, 0.498039, 1 )
+position = Vector2( 0, -12.5 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 48 )
+
+[node name="eyes" type="Node2D" parent="Ghost"]
+
+[node name="Sprite" type="Sprite" parent="Ghost/eyes"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -4.662, -3.518 )
+scale = Vector2( 0.02, 0.04 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="Ghost/eyes"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 4.388, -3.186 )
+scale = Vector2( 0.02, 0.04 )
+texture = ExtResource( 6 )
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( -21, 66 )
+scale = Vector2( 10, 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+light_mask = 2
+position = Vector2( 0, -10 )
+frames = SubResource( 47 )
+animation = "down"
+frame = 2
+playing = true
+
+[node name="blood_everywhere" type="CPUParticles2D" parent="."]
+position = Vector2( -21.06, -16.74 )
+scale = Vector2( 1, 1 )
+z_index = -1
+emitting = false
+amount = 30
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource( 5 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 1.0
+angular_velocity = 221.1
+angular_velocity_random = 1.0
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 50 )
+color_ramp = SubResource( 51 )
+
+[node name="whooooo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="you died" type="Label" parent="."]
+margin_left = -149.0
+margin_top = 95.0
+margin_right = 140.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 52 )
+text = "you died"
+
+[node name="press r to restart" type="Label" parent="."]
+margin_left = -222.0
+margin_top = 191.0
+margin_right = 255.0
+margin_bottom = 235.0
+custom_fonts/font = SubResource( 53 )
+text = "press r to restart"

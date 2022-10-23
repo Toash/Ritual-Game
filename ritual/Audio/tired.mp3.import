@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tired.mp3-f9affec5fe534dadd7482d6e1b01607b.mp3str"
+
+[deps]
+
+source_file="res://Audio/tired.mp3"
+dest_files=[ "res://.import/tired.mp3-f9affec5fe534dadd7482d6e1b01607b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

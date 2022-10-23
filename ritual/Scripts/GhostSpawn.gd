@@ -2,7 +2,7 @@ extends Node2D
 
 class_name GhostSpawn
 
-onready var activated:bool = false
+onready var activated:bool = true
 
 onready var onGizmo = $Activated
 onready var offGizmo = $Deactivated

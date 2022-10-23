@@ -1,11 +1,14 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Modern tiles_Free/Characters_free/Adam_run_16x16.png" type="Texture" id=2]
-[ext_resource path="res://Modern tiles_Free/Characters_free/Adam_idle_16x16.png" type="Texture" id=3]
-[ext_resource path="res://Art/white.png" type="Texture" id=4]
+[ext_resource path="res://Art/Modern tiles_Free/Characters_free/Adam_run_16x16.png" type="Texture" id=2]
+[ext_resource path="res://Art/Modern tiles_Free/Characters_free/Adam_idle_16x16.png" type="Texture" id=3]
+[ext_resource path="res://Art/light.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Player/PlayerFlashlight.gd" type="Script" id=5]
 [ext_resource path="res://Audio/Player/Retro FootStep 03.wav" type="AudioStream" id=6]
+[ext_resource path="res://Art/bloodsplat.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Player/CameraManager.gd" type="Script" id=8]
+[ext_resource path="res://Audio/tired.mp3" type="AudioStream" id=9]
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 2 )
@@ -170,12 +173,17 @@ radius = 10.5753
 [sub_resource type="CircleShape2D" id=48]
 radius = 264.282
 
+[sub_resource type="Gradient" id=49]
+offsets = PoolRealArray( 0, 0.785859, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
 [node name="Player" type="KinematicBody2D"]
 z_index = 1
 script = ExtResource( 1 )
-speed = 200
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+light_mask = 524288
 position = Vector2( 0, -10 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
@@ -192,20 +200,35 @@ current = true
 zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
 smoothing_speed = 8.0
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="Camera2D"]
 
 [node name="Flashlight" type="Light2D" parent="."]
 texture = ExtResource( 4 )
-texture_scale = 50.0
-color = Color( 0.447059, 0.447059, 0.447059, 1 )
+texture_scale = 2.2
+energy = 0.5
+mode = 3
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
-shadow_buffer_size = 512
-shadow_filter_smooth = 1.0
 script = ExtResource( 5 )
+
+[node name="small_light" type="Light2D" parent="."]
+light_mask = 2
+texture = ExtResource( 4 )
+energy = 0.4
+range_layer_max = 3
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_item_cull_mask = 2
 
 [node name="Small" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 10
+collision_mask = 26
 priority = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Small"]
@@ -220,13 +243,39 @@ priority = 100.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Big"]
 shape = SubResource( 48 )
 
-[node name="Pickup" type="AudioStreamPlayer" parent="."]
-
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-volume_db = 1.0
+volume_db = -20.0
 
+[node name="Blood" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 10
+lifetime = 20.0
+local_coords = false
+texture = ExtResource( 7 )
+gravity = Vector2( 0, 0 )
+angle = 26.6
+angle_random = 1.0
+scale_amount = 0.6
+scale_amount_random = 1.0
+color_ramp = SubResource( 49 )
+
+[node name="Listener2D" type="Listener2D" parent="."]
+current = true
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SprintCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="OutOfBreath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -20.0
+pitch_scale = 1.5
+
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Small" to="." method="_entered_small_collider"]
 [connection signal="area_exited" from="Small" to="." method="_exited_small_collider"]
 [connection signal="area_entered" from="Big" to="." method="_entered_spawn_collider"]
 [connection signal="area_exited" from="Big" to="." method="_exit_spawn_collider"]
+[connection signal="timeout" from="SprintCooldown" to="." method="_sprint_cooldown_over"]

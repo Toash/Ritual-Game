@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Iwan Gabovitch - Dark Ambience Loop.mp3-45e143f7fedbf831d0a9db76e08272cd.mp3str"
+
+[deps]
+
+source_file="res://Audio/Iwan Gabovitch - Dark Ambience Loop.mp3"
+dest_files=[ "res://.import/Iwan Gabovitch - Dark Ambience Loop.mp3-45e143f7fedbf831d0a9db76e08272cd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

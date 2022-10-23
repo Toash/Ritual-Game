@@ -1,0 +1,224 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Art/Modern tiles_Free/Characters_free/Bob_idle_16x16.png" type="Texture" id=1]
+[ext_resource path="res://Art/fog.png" type="Texture" id=2]
+[ext_resource path="res://Art/light.png" type="Texture" id=3]
+[ext_resource path="res://Audio/Ghost/Moans/qubodup-GhostMoan01.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Ghost/Moans/qubodup-GhostMoan03.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/Retro Ambience 02.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/WinCutscene.gd" type="Script" id=7]
+[ext_resource path="res://Fonts/upheavtt.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+angular_velocity = 156.83
+angular_velocity_random = 0.62
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 51.48
+scale = 0.32
+scale_random = 0.1
+color = Color( 1, 0, 0, 0.2 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "die"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.3, 1.9, 2.5, 3.3, 6, 6.3, 6.7, 7.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.204, 1 ), Vector2( 1, 1 ), Vector2( 1.646, 1 ), Vector2( 1.204, 1 ), Vector2( 0.536, 1 ), Vector2( 2.792, 1 ), Vector2( 0.378, 1 ), Vector2( -0.416, 1 ), Vector2( -5.988, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.6 )
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 5.9 )
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("background")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( -0.1 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ghost:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("you dispelled the ghost:percent_visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6.3, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("POOF:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 6.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+font_data = ExtResource( 9 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.570902, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
+
+[node name="Win" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Ghost" type="Node2D" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1.05829, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Ghost"]
+self_modulate = Color( 1, 0.498039, 0.498039, 1 )
+position = Vector2( 0, -12.5 )
+scale = Vector2( 10, 10 )
+frames = SubResource( 4 )
+
+[node name="eyes" type="Node2D" parent="Ghost"]
+
+[node name="Sprite" type="Sprite" parent="Ghost/eyes"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -26.16, 32.478 )
+scale = Vector2( 0.15, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Ghost/eyes"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 26.222, 36.194 )
+scale = Vector2( 0.15, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="Ghost"]
+z_index = -1
+amount = 100
+lifetime = 2.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "die"
+anims/die = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -16.155
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="you dispelled the ghost" type="Label" parent="."]
+margin_left = -422.0
+margin_top = -100.0
+margin_right = 415.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 8 )
+text = "You dispelled the ghost!"
+percent_visible = 0.0
+
+[node name="POOF" type="CPUParticles2D" parent="."]
+z_index = -1
+emitting = false
+amount = 20
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 1.0
+angular_velocity = 34.01
+angular_velocity_random = 1.0
+damping = 3.0
+angle = 178.0
+angle_random = 1.0
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 10 )
+color = Color( 1, 0, 0, 1 )
+color_ramp = SubResource( 11 )
